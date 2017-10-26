@@ -18,7 +18,12 @@ exports.initialize = function (connection) {
       });
 
       // Create a unique index using the "field" and "model" fields.
-      counterSchema.index({ field: 1, model: 1 }, { unique: true, required: true, index: -1 });
+        counterSchema.index({ field: 1, model: 1 }, {
+            unique: true,
+            required: true,
+            index: -1,
+            sparse: true,
+        });
 
       // Create model using new schema.
       IdentityCounter = connection.model('IdentityCounter', counterSchema);
@@ -41,7 +46,7 @@ exports.plugin = function (schema, options) {
     field: '_id', // The field the plugin should track.
     startAt: 0, // The number the count should start at.
     incrementBy: 1, // The number by which to increment the count each time.
-    unique: true // Should we create a unique index for the field
+    unique: true, // Should we create a unique index for the field,
   },
   fields = {}, // A hash of fields to add properties to in Mongoose.
   ready = false; // True if the counter collection has been updated and the document is ready to be saved.
@@ -63,7 +68,8 @@ exports.plugin = function (schema, options) {
   // Add properties for field in schema.
   fields[settings.field] = {
     type: Number,
-    require: true
+    require: true,
+    sparse: true,
   };
   if (settings.field !== '_id')
     fields[settings.field].unique = settings.unique
