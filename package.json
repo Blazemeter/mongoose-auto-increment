@@ -10,7 +10,7 @@
     "extend": "^3.0.0"
   },
   "peerDependencies": {
-    "mongoose": "^6.5.0"
+    "mongoose": "^7.5.4"
   },
   "devDependencies": {
     "async": "*",
