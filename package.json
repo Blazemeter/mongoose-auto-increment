@@ -11,13 +11,13 @@
     "should": "^13.2.3"
   },
   "peerDependencies": {
-    "mongoose": "^7.5.4"
+    "mongoose": "^6.5.4"
   },
   "devDependencies": {
     "async": "*",
     "chai": "*",
     "mocha": "*",
-    "mongoose": "^7.5.4",
+    "mongoose": "^6.5.4",
     "should": "^13.2.3"
   },
   "keywords": [
